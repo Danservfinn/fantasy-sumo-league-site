@@ -13,4 +13,13 @@ describe('team analysis pages', () => {
     expect(danny?.picks.map((pick) => pick.name)).toContain('Kinbozan')
     expect(danny?.finalVerdict.join(' ')).toContain('contender')
   })
+
+  it('includes the dedicated scouting report details for Josh', () => {
+    const josh = teamAnalyses.find((analysis) => analysis.owner === 'Josh')
+    expect(josh?.overallGrade).toBe('A- / 91')
+    expect(josh?.roster).toHaveLength(6)
+    expect(josh?.picks.map((pick) => pick.name)).toEqual(['Hoshoryu', 'Wakatakakage', 'Gonoyama', 'Abi', 'Oshoma', 'Shishi'])
+    expect(josh?.archetype?.label).toBe('Anchor-and-depth contender')
+    expect(josh?.finalVerdict.join(' ')).toContain('title contender')
+  })
 })

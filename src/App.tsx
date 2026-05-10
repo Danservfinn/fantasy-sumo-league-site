@@ -95,7 +95,7 @@ function App() {
         <div className="section-heading">
           <p className="eyebrow">Draft room</p>
           <h2>Analysis pages for all six players</h2>
-          <p>Each league player now has a dedicated analysis page. Danny’s page includes the full GPT Pro scouting report.</p>
+          <p>Each league player now has a dedicated analysis page. Danny and Josh now include full scouting reports, with the remaining reports staged for review.</p>
         </div>
         <div className="analysis-grid">
           {teamAnalyses.map((analysis) => {
@@ -257,8 +257,13 @@ function AnalysisPage({ analysis, onNavigateHome, onOpenAnalysis }: { analysis: 
       </section>}
 
       {analysis.trackGrades && <section className="section">
-        <div className="section-heading"><p className="eyebrow">Track grades</p><h2>How Danny profiles</h2></div>
+        <div className="section-heading"><p className="eyebrow">Track grades</p><h2>How Team {analysis.owner} profiles</h2></div>
         <div className="analysis-grid">{analysis.trackGrades.map((track) => <article className="analysis-card" key={track.label}><p className="eyebrow">{track.label}</p><h3>{track.grade}</h3><p>{track.note}</p></article>)}</div>
+      </section>}
+
+      {(analysis.archetype || analysis.comparison) && <section className="section split">
+        {analysis.archetype && <article className="analysis-panel"><p className="eyebrow">Team archetype</p><h2>{analysis.archetype.label}</h2><p>{analysis.archetype.why}</p></article>}
+        {analysis.comparison && <article className="analysis-panel"><p className="eyebrow">Compared to Team Danny</p><h2>Relative profile</h2><ul>{analysis.comparison.map((item) => <li key={item.label}><strong>{item.label}:</strong> {item.note}</li>)}</ul></article>}
       </section>}
 
       <section className="section split">
