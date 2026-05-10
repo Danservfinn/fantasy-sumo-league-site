@@ -1,0 +1,22 @@
+{
+  "day": 9,
+  "lastUpdated": "2026-05-09T22:40:00.000Z",
+  "sourceStatus": "snapshot",
+  "provider": "public/data/live-snapshot.json",
+  "events": [
+    {
+      "day": 9,
+      "title": "Local snapshot loaded",
+      "summary": "This feed is intentionally local: edit public/data/live-snapshot.json or wire /api/live to official source ingestion.",
+      "time": "snapshot",
+      "source": "snapshot"
+    },
+    {
+      "day": 9,
+      "title": "Standings projection recalculated",
+      "summary": "Fantasy points update from roster W-L, kinboshi, honor, kachi-koshi and kimarite fields.",
+      "time": "model",
+      "source": "snapshot"
+    }
+  ]
+}
