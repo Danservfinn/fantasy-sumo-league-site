@@ -1,6 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { leagueTeams, scoringRules } from './data/league'
-import { analysisForOwner, teamAnalyses, type TeamAnalysis } from './data/analysis'
+import {
+  categoryLeaders,
+  finalLeagueRead,
+  leagueBluntRead,
+  leagueCheatSheet,
+  leaguePowerRanking,
+  teamAnalyses,
+  type TeamAnalysis,
+} from './data/analysis'
 import { connectLiveEvents, type LiveSnapshot } from './liveData'
 import { headToHeadMatchups, rikishiFantasyPoints, sortedStandings } from './scoring'
 import './styles.css'
@@ -91,11 +99,11 @@ function App() {
         </div>
       </section>
 
-      <section className="section" id="analysis">
+      <section className="section" id="reports">
         <div className="section-heading">
           <p className="eyebrow">Draft room</p>
           <h2>Analysis pages for all six players</h2>
-          <p>Each league player now has a dedicated analysis page. Danny and Josh now include full scouting reports, with the remaining reports staged for review.</p>
+          <p>Each league player now has a dedicated full scouting report with roster grades, pick-by-pick verdicts, model tables, win/loss conditions, and final read.</p>
         </div>
         <div className="analysis-grid">
           {teamAnalyses.map((analysis) => {
@@ -165,6 +173,36 @@ function App() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="section" id="analysis">
+        <div className="section-heading">
+          <p className="eyebrow">Report hub</p>
+          <h2>All-team power ranking</h2>
+          <p>{leagueBluntRead}</p>
+        </div>
+        <div className="power-table">
+          {leaguePowerRanking.map((row) => (
+            <article className="power-row" key={row.team}>
+              <span>#{row.rank}</span>
+              <strong>{row.team}</strong>
+              <b>{row.grade}</b>
+              <small>{row.projectedWins} wins • ceiling {row.ceiling} • floor {row.floor}</small>
+              <p>{row.read}</p>
+            </article>
+          ))}
+        </div>
+        <div className="split report-summary">
+          <article className="analysis-panel">
+            <h3>Best teams by category</h3>
+            <ul>{categoryLeaders.map((item) => <li key={item.category}><strong>{item.category}:</strong> {item.team} — {item.why}</li>)}</ul>
+          </article>
+          <article className="analysis-panel">
+            <h3>30-second cheat sheet</h3>
+            <ul>{leagueCheatSheet.map((item) => <li key={item}>{item}</li>)}</ul>
+            {finalLeagueRead.map((item) => <p key={item}>{item}</p>)}
+          </article>
         </div>
       </section>
 

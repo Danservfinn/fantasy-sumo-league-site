@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { teamAnalyses } from './data/analysis'
+import { categoryLeaders, leaguePowerRanking, teamAnalyses } from './data/analysis'
 
 describe('team analysis pages', () => {
   it('creates one analysis page per fantasy player', () => {
@@ -16,10 +16,16 @@ describe('team analysis pages', () => {
 
   it('includes the dedicated scouting report details for Josh', () => {
     const josh = teamAnalyses.find((analysis) => analysis.owner === 'Josh')
-    expect(josh?.overallGrade).toBe('A- / 91')
+    expect(josh?.overallGrade).toBe('A- / 90')
     expect(josh?.roster).toHaveLength(6)
     expect(josh?.picks.map((pick) => pick.name)).toEqual(['Hoshoryu', 'Wakatakakage', 'Gonoyama', 'Abi', 'Oshoma', 'Shishi'])
-    expect(josh?.archetype?.label).toBe('Anchor-and-depth contender')
-    expect(josh?.finalVerdict.join(' ')).toContain('title contender')
+    expect(josh?.archetype?.label).toBe('Top-heavy contender with fragile mid-rounds')
+    expect(josh?.finalVerdict.join(' ')).toContain('favorite')
+  })
+
+  it('publishes the league power ranking and category read', () => {
+    expect(leaguePowerRanking.map((row) => row.team)).toEqual(['Josh', 'Danny', 'Joe', 'Dolo', 'David', 'Liz'])
+    expect(leaguePowerRanking[0]).toMatchObject({ rank: 1, grade: 'A- / 90', projectedWins: '45–49' })
+    expect(categoryLeaders.map((row) => row.category)).toContain('Most damaged by kyujo')
   })
 })

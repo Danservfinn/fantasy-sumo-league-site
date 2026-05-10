@@ -67,7 +67,7 @@ export const leagueTeams: Team[] = [
       { name: 'Asakoryu', rank: 'Maegashira 7', side: 'West', wins: 5, losses: 4, honorPoints: 0, kinboshi: 0, notableKimarite: 1, rareKimarite: 0, status: 'active' },
       { name: 'Onosato', rank: 'Yokozuna 1', side: 'West', wins: 0, losses: 0, honorPoints: 0, kinboshi: 0, notableKimarite: 0, rareKimarite: 0, status: 'monitor', note: 'Absence/watch-list flag; update from official kyokai source.' },
       { name: 'Takayasu', rank: 'Komusubi 1', side: 'West', wins: 6, losses: 3, honorPoints: 0, kinboshi: 0, notableKimarite: 1, rareKimarite: 0, status: 'active' },
-      { name: 'Hakuoho', rank: 'Maegashira 10', side: 'West', wins: 7, losses: 2, honorPoints: 4, kinboshi: 0, notableKimarite: 2, rareKimarite: 0, status: 'active' },
+      { name: 'Hakunofuji', rank: 'Maegashira 10', side: 'West', wins: 7, losses: 2, honorPoints: 4, kinboshi: 0, notableKimarite: 2, rareKimarite: 0, status: 'active' },
       { name: 'Hiradoumi', rank: 'Maegashira 3', side: 'East', wins: 4, losses: 5, honorPoints: 0, kinboshi: 1, notableKimarite: 0, rareKimarite: 0, status: 'active' },
       { name: 'Nishikifuji', rank: 'Maegashira 9', side: 'West', wins: 5, losses: 4, honorPoints: 0, kinboshi: 0, notableKimarite: 0, rareKimarite: 0, status: 'active' },
     ],
