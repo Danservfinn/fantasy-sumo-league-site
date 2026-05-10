@@ -28,6 +28,10 @@ npm run typecheck
 npm run build
 ```
 
+## Deployment receipts
+
+Deployment receipts live in `docs/deployment-receipts.md`. Each receipt records the UTC date, commit SHA, test/build results, public service URL, and non-secret verification evidence.
+
 ## Live data architecture
 
 The client calls `connectLiveEvents()` in `src/liveData.ts`:
